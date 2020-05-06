@@ -2255,6 +2255,22 @@ public String[] getAssetContentList(String Path) throws IOException {
 	return sFolders; 
 } 
 
+//private static boolean assetExists(Context context, String fileName) throws IOException {
+//https://www.codota.com/code/java/methods/android.content.res.Resources/getAssets
+        public  boolean assetExists(String _filename)   throws IOException{
+         // ShowMessage('teste');
+             int i = _filename.lastIndexOf('/');
+             String path = i >= 0 ? _filename.substring(0, i) : "";
+             String file = i >= 0 ? _filename.substring(i + 1) : _filename;
+
+		Resources r = this.controls.activity.getResources();
+		AssetManager am = r.getAssets();
+                String fileList[] = am.list(path);
+//             return Arrays.asList(_context.getResources().getAssets().list(path)).contains(file);
+//             return Arrays.asList(r.getAssets().list(path)).contains(file);
+             return Arrays.asList(fileList).contains(file);
+        }	
+
 //Fatih: gets system storage driver list
 public String[] getDriverList() { 
 	ArrayList<String> Drivers = new ArrayList<String>(); 
